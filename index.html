@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeekLab Ventures — Privacy-First Tools for Work</title>
+<meta name="description" content="Browser-based, privacy-first productivity tools. No uploads, no accounts, no tracking. PDF Master, InvoiceAI, SmartRenamer — all processing happens on your device.">
+<style>
+:root{--bg:#0a0a0f;--surface:#14141f;--border:#252540;--text:#e8e8f0;--muted:#8888a0;--accent:#6c5ce7;--accent-glow:#a29bfe;--success:#00b894;--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:1px solid var(--border)}
+header .logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent-glow),#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:0.9rem}
+header nav a:hover{color:var(--text)}
+.hero{padding:80px 24px 60px;text-align:center;max-width:700px;margin:0 auto}
+.hero h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:20px}
+.hero h1 span{background:linear-gradient(135deg,#a29bfe,#6c5ce7,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:1.2rem;margin-bottom:8px}
+.privacy-banner{background:rgba(0,184,148,0.06);border:1px solid rgba(0,184,148,0.2);border-radius:8px;padding:14px 24px;text-align:center;color:var(--success);font-weight:500;max-width:600px;margin:0 auto 48px}
+.products{max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all 0.3s;text-decoration:none;color:var(--text);display:block;position:relative;overflow:hidden}
+.product-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 48px rgba(108,92,231,0.15)}
+.product-card .icon{font-size:3rem;margin-bottom:16px}
+.product-card h3{font-size:1.3rem;margin-bottom:8px}
+.product-card p{color:var(--muted);font-size:0.95rem;margin-bottom:16px;line-height:1.5}
+.product-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.product-card .tag{padding:4px 12px;background:rgba(108,92,231,0.1);border-radius:12px;font-size:0.8rem;color:var(--accent-glow)}
+.product-card .price-row{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--border)}
+.product-card .price{font-weight:700;color:var(--accent-glow);font-size:1.1rem}
+.product-card .cta{color:var(--accent);font-weight:600;font-size:0.9rem}
+.newsletter{max-width:500px;margin:80px auto;padding:40px;background:linear-gradient(135deg,rgba(108,92,231,0.1),rgba(253,121,168,0.05));border:1px solid rgba(108,92,231,0.2);border-radius:var(--radius);text-align:center}
+.newsletter h2{font-size:1.6rem;margin-bottom:8px}
+.newsletter p{color:var(--muted);margin-bottom:20px}
+.newsletter input{padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:1rem;width:100%;max-width:300px;margin-bottom:12px}
+.newsletter button{padding:12px 32px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer}
+footer{text-align:center;padding:32px;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero h1{font-size:2rem}.products{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">WeekLab Ventures</div>
+  <nav><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<div class="hero">
+  <h1>Tools That <span>Respect Your Privacy</span></h1>
+  <p>Every product we build runs locally in your browser. No uploads, no accounts, no tracking. Just tools that work.</p>
+</div>
+
+<div class="privacy-banner">🔒 All processing happens on your device. Zero data collection. Open source.</div>
+
+<div class="products" id="products">
+  <a href="https://32a3e54d222c8872-39-157-112-53.serveousercontent.com" target="_blank" class="product-card">
+    <div class="icon">📑</div>
+    <h3>PDF Master</h3>
+    <p>Merge, split, compress, watermark, rotate PDFs — all in your browser. The most private PDF tool on the internet.</p>
+    <div class="tags"><span class="tag">PDF</span><span class="tag">Browser</span><span class="tag">Free</span></div>
+    <div class="price-row"><span class="price">$19 lifetime</span><span class="cta">Try Free →</span></div>
+  </a>
+
+  <a href="https://27e5d7fafc1245f2-39-157-112-53.serveousercontent.com" target="_blank" class="product-card">
+    <div class="icon">🧾</div>
+    <h3>InvoiceAI</h3>
+    <p>Upload invoice images, extract amounts, tax IDs, dates automatically. Client-side OCR, no data leakage.</p>
+    <div class="tags"><span class="tag">OCR</span><span class="tag">Invoice</span><span class="tag">AI</span></div>
+    <div class="price-row"><span class="price">$29 lifetime</span><span class="cta">Try Free →</span></div>
+  </a>
+
+  <a href="#" class="product-card" style="opacity:0.7">
+    <div class="icon">🐍</div>
+    <h3>SmartRenamer</h3>
+    <p>Intelligent batch file renamer for photographers & e-commerce sellers. EXIF date, SKU matching, regex.</p>
+    <div class="tags"><span class="tag">CLI</span><span class="tag">Python</span><span class="tag">Automation</span></div>
+    <div class="price-row"><span class="price">$39 lifetime</span><span class="cta">Coming Soon →</span></div>
+  </a>
+</div>
+
+<div class="newsletter">
+  <h2>Get notified about new tools</h2>
+  <p>No spam, just new product launches.</p>
+  <input type="email" placeholder="your@email.com"><br>
+  <button>Subscribe</button>
+</div>
+
+<footer>
+  <p>WeekLab Ventures · Privacy-First Software · 2026</p>
+</footer>
+</body>
+</html>
