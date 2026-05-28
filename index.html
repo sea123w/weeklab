@@ -3,90 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeekLab Ventures — Privacy-First Tools for Work</title>
-<meta name="description" content="Browser-based, privacy-first productivity tools. No uploads, no accounts, no tracking. PDF Master, InvoiceAI, SmartRenamer — all processing happens on your device.">
+<title>WeekLab — Tech Solutions for SMBs | QR Ordering · Automation · Custom Tools</title>
+<meta name="description" content="We build practical tech solutions for small businesses: QR ordering systems, data automation, custom internal tools. See a working demo before you commit.">
 <style>
 :root{--bg:#0a0a0f;--surface:#14141f;--border:#252540;--text:#e8e8f0;--muted:#8888a0;--accent:#6c5ce7;--accent-glow:#a29bfe;--success:#00b894;--radius:14px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7}
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:1px solid var(--border)}
 header .logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent-glow),#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 header nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:0.9rem}
 header nav a:hover{color:var(--text)}
+.btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-size:0.95rem;transition:all 0.2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(108,92,231,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,92,231,0.5)}
+.btn-outline{background:transparent;color:var(--accent-glow);border:1px solid var(--accent)}
 .hero{padding:80px 24px 60px;text-align:center;max-width:700px;margin:0 auto}
-.hero h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:20px}
+.hero .badge{display:inline-block;padding:6px 16px;background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3);border-radius:20px;color:var(--accent-glow);font-size:0.85rem;margin-bottom:20px}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.2;margin-bottom:16px}
 .hero h1 span{background:linear-gradient(135deg,#a29bfe,#6c5ce7,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:var(--muted);font-size:1.2rem;margin-bottom:8px}
-.privacy-banner{background:rgba(0,184,148,0.06);border:1px solid rgba(0,184,148,0.2);border-radius:8px;padding:14px 24px;text-align:center;color:var(--success);font-weight:500;max-width:600px;margin:0 auto 48px}
-.products{max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all 0.3s;text-decoration:none;color:var(--text);display:block;position:relative;overflow:hidden}
-.product-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 48px rgba(108,92,231,0.15)}
-.product-card .icon{font-size:3rem;margin-bottom:16px}
-.product-card h3{font-size:1.3rem;margin-bottom:8px}
-.product-card p{color:var(--muted);font-size:0.95rem;margin-bottom:16px;line-height:1.5}
-.product-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.product-card .tag{padding:4px 12px;background:rgba(108,92,231,0.1);border-radius:12px;font-size:0.8rem;color:var(--accent-glow)}
-.product-card .price-row{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--border)}
-.product-card .price{font-weight:700;color:var(--accent-glow);font-size:1.1rem}
-.product-card .cta{color:var(--accent);font-weight:600;font-size:0.9rem}
-.newsletter{max-width:500px;margin:80px auto;padding:40px;background:linear-gradient(135deg,rgba(108,92,231,0.1),rgba(253,121,168,0.05));border:1px solid rgba(108,92,231,0.2);border-radius:var(--radius);text-align:center}
-.newsletter h2{font-size:1.6rem;margin-bottom:8px}
-.newsletter p{color:var(--muted);margin-bottom:20px}
-.newsletter input{padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:1rem;width:100%;max-width:300px;margin-bottom:12px}
-.newsletter button{padding:12px 32px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:550px;margin:0 auto 24px}
+.services{max-width:1000px;margin:0 auto;padding:0 24px 60px}
+.services h2{text-align:center;font-size:1.8rem;margin-bottom:40px}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all 0.3s;position:relative}
+.service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 48px rgba(108,92,231,0.12)}
+.service-card .icon{font-size:2.5rem;margin-bottom:16px}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{color:var(--muted);font-size:0.92rem;margin-bottom:16px}
+.service-card .price{font-weight:700;color:var(--accent-glow);font-size:1.1rem}
+.service-card .tag{position:absolute;top:16px;right:16px;background:rgba(0,184,148,0.12);color:var(--success);padding:3px 10px;border-radius:10px;font-size:0.75rem;font-weight:600}
+.demo-card{max-width:800px;margin:0 auto 60px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;text-align:center}
+.demo-card h3{font-size:1.3rem;margin-bottom:16px}
+.contact{max-width:500px;margin:0 auto 60px;padding:40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.contact h2{font-size:1.4rem;margin-bottom:12px}
+.contact p{color:var(--muted);margin-bottom:20px}
+.contact .methods{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.contact .method{padding:16px 24px;background:var(--bg);border-radius:10px;min-width:140px}
+.contact .method .label{color:var(--muted);font-size:0.8rem}
+.contact .method .val{font-weight:600;margin-top:4px}
 footer{text-align:center;padding:32px;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--border)}
-@media(max-width:600px){.hero h1{font-size:2rem}.products{grid-template-columns:1fr}}
+footer a{color:var(--accent-glow);text-decoration:none}
+@media(max-width:600px){.hero h1{font-size:1.8rem}.service-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">WeekLab Ventures</div>
-  <nav><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  <div class="logo">WeekLab</div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#demo">Demo</a>
+    <a href="#contact">Contact</a>
+    <a href="zh.html">中文</a>
+  </nav>
 </header>
 
 <div class="hero">
-  <h1>Tools That <span>Respect Your Privacy</span></h1>
-  <p>Every product we build runs locally in your browser. No uploads, no accounts, no tracking. Just tools that work.</p>
+  <div class="badge">Serving SMBs Worldwide</div>
+  <h1>Practical tech <span>that pays for itself</span></h1>
+  <p>We build and deploy real solutions for small businesses — QR ordering, data automation, custom internal tools. No fluff, working demos first.</p>
 </div>
 
-<div class="privacy-banner">🔒 All processing happens on your device. Zero data collection. Open source.</div>
+<div class="services" id="services">
+  <h2>What We Build</h2>
+  <div class="service-grid">
 
-<div class="products" id="products">
-  <a href="https://32a3e54d222c8872-39-157-112-53.serveousercontent.com" target="_blank" class="product-card">
-    <div class="icon">📑</div>
-    <h3>PDF Master</h3>
-    <p>Merge, split, compress, watermark, rotate PDFs — all in your browser. The most private PDF tool on the internet.</p>
-    <div class="tags"><span class="tag">PDF</span><span class="tag">Browser</span><span class="tag">Free</span></div>
-    <div class="price-row"><span class="price">$19 lifetime</span><span class="cta">Try Free →</span></div>
-  </a>
+    <div class="service-card">
+      <div class="tag">Featured</div>
+      <div class="icon">📱</div>
+      <h3>QR Ordering System</h3>
+      <p>Customers scan → order from phone → kitchen prints ticket. Cuts delivery platform fees by 20-35%. Works for dine-in and pickup.</p>
+      <div class="price">$400 – $1,200</div>
+    </div>
 
-  <a href="https://27e5d7fafc1245f2-39-157-112-53.serveousercontent.com" target="_blank" class="product-card">
-    <div class="icon">🧾</div>
-    <h3>InvoiceAI</h3>
-    <p>Upload invoice images, extract amounts, tax IDs, dates automatically. Client-side OCR, no data leakage.</p>
-    <div class="tags"><span class="tag">OCR</span><span class="tag">Invoice</span><span class="tag">AI</span></div>
-    <div class="price-row"><span class="price">$29 lifetime</span><span class="cta">Try Free →</span></div>
-  </a>
+    <div class="service-card">
+      <div class="icon">🤖</div>
+      <h3>Data Automation</h3>
+      <p>Web scraping, report generation, Excel automation, price monitoring. Python scripts built to your specs.</p>
+      <div class="price">$150 – $1,200</div>
+    </div>
 
-  <a href="#" class="product-card" style="opacity:0.7">
-    <div class="icon">🐍</div>
-    <h3>SmartRenamer</h3>
-    <p>Intelligent batch file renamer for photographers & e-commerce sellers. EXIF date, SKU matching, regex.</p>
-    <div class="tags"><span class="tag">CLI</span><span class="tag">Python</span><span class="tag">Automation</span></div>
-    <div class="price-row"><span class="price">$39 lifetime</span><span class="cta">Coming Soon →</span></div>
-  </a>
+    <div class="service-card">
+      <div class="icon">📑</div>
+      <h3>Document Tools</h3>
+      <p>PDF processing, invoice OCR, batch file renaming. Browser-based privacy-first tools, customized for your workflow.</p>
+      <div class="price">$150 – $700</div>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🛠️</div>
+      <h3>Custom Internal Tools</h3>
+      <p>Booking systems, inventory management, CRM tweaks. Internal tools that fit your exact process.</p>
+      <div class="price">$500 – $3,000</div>
+    </div>
+
+  </div>
 </div>
 
-<div class="newsletter">
-  <h2>Get notified about new tools</h2>
-  <p>No spam, just new product launches.</p>
-  <input type="email" placeholder="your@email.com"><br>
-  <button>Subscribe</button>
+<div class="demo-card" id="demo">
+  <h3>Live Demo: Restaurant QR Ordering</h3>
+  <p style="color:var(--muted);margin-bottom:16px">Scan the QR code or open the link on your phone</p>
+  <a href="https://ac9a90ea60c5ce1d-39-157-112-53.serveousercontent.com" target="_blank" class="btn btn-outline">Open Demo</a>
+  <p style="color:var(--muted);font-size:0.85rem;margin-top:12px">This is a fully functional ordering page for a noodle restaurant.</p>
+</div>
+
+<div class="contact" id="contact">
+  <h2>Let's Talk</h2>
+  <p>No commitment. Tell us what you need — we'll tell you if we can help.</p>
+  <div class="methods">
+    <div class="method">
+      <div class="label">Email</div>
+      <div class="val">weeklab@proton.me</div>
+    </div>
+    <div class="method">
+      <div class="label">Response Time</div>
+      <div class="val">< 24 hours</div>
+    </div>
+  </div>
 </div>
 
 <footer>
-  <p>WeekLab Ventures · Privacy-First Software · 2026</p>
+  <p>WeekLab — Tech that works for your business</p>
+  <p style="margin-top:4px"><a href="https://github.com/sea123w">GitHub</a> · Open source · Honest work</p>
 </footer>
 </body>
 </html>

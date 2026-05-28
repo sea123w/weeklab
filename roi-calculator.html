@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>餐厅外卖佣金节省计算器 | WeekLab</title>
+<meta name="description" content="计算你的餐厅如果使用自营扫码点餐，一年能省多少平台佣金。输入月营业额和外卖占比即可。">
+<style>
+:root{--bg:#0a0a0f;--surface:#14141f;--text:#e8e8f0;--muted:#8888a0;--accent:#6c5ce7;--accent-glow:#a29bfe;--success:#00b894;--danger:#e74c3c}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:var(--surface);border:1px solid #252540;border-radius:16px;padding:40px;max-width:500px;width:100%;text-align:center}
+h1{font-size:1.6rem;margin-bottom:8px}
+h1 span{background:linear-gradient(135deg,#a29bfe,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:var(--muted);margin-bottom:32px;font-size:0.95rem}
+.slider-group{margin-bottom:24px;text-align:left}
+.slider-group label{font-size:0.9rem;color:var(--muted);display:block;margin-bottom:8px}
+.slider-group input[type=range]{width:100%;accent-color:var(--accent)}
+.slider-group .range-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted)}
+.slider-group .current-val{text-align:center;font-size:1.5rem;font-weight:700;color:var(--accent-glow);margin-top:4px}
+.result{background:rgba(0,184,148,0.06);border:1px solid rgba(0,184,148,0.2);border-radius:12px;padding:24px;margin-top:24px}
+.result .big-num{font-size:2.5rem;font-weight:800;color:var(--success)}
+.result .detail{color:var(--muted);font-size:0.9rem;margin-top:8px}
+.result .breakdown{display:flex;justify-content:space-around;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06)}
+.result .breakdown .item .val{font-weight:700;font-size:1.1rem}
+.result .breakdown .item .lbl{font-size:0.75rem;color:var(--muted)}
+.cta{margin-top:24px}
+.cta a{display:inline-block;padding:12px 32px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
+.cta p{color:var(--muted);font-size:0.85rem;margin-top:8px}
+footer{margin-top:24px;color:var(--muted);font-size:0.8rem}
+footer a{color:var(--accent-glow);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>你的餐厅被平台<span>抽走多少钱？</span></h1>
+  <p class="subtitle">拖动滑块，3秒算出答案</p>
+
+  <div class="slider-group">
+    <label>🏪 月营业额</label>
+    <input type="range" id="revenue" min="20000" max="300000" step="5000" value="60000" oninput="calc()">
+    <div class="range-labels"><span>¥2万</span><span>¥30万</span></div>
+    <div class="current-val" id="rev-val">¥60,000</div>
+  </div>
+
+  <div class="slider-group">
+    <label>🛵 外卖占总营收比例</label>
+    <input type="range" id="delivery" min="10" max="80" step="5" value="50" oninput="calc()">
+    <div class="range-labels"><span>10%</span><span>80%</span></div>
+    <div class="current-val" id="del-val">50%</div>
+  </div>
+
+  <div class="result">
+    <div style="font-size:0.9rem;color:var(--muted)">一年交给外卖平台的佣金</div>
+    <div class="big-num" id="annual-fee">¥79,200</div>
+    <div class="detail">≈ 一个全职员工的年薪</div>
+    <div class="breakdown">
+      <div class="item"><div class="val" id="monthly-fee">¥6,600</div><div class="lbl">每月佣金</div></div>
+      <div class="item"><div class="val" style="color:var(--success)" id="savings">¥3,300</div><div class="lbl">自营替代每月省</div></div>
+      <div class="item"><div class="val" style="color:var(--success)" id="net-year">¥31,600</div><div class="lbl">首年净省</div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="https://78cc9b4e22c34fbd-39-157-112-53.serveousercontent.com" target="_blank">了解自营扫码点餐方案 →</a>
+    <p>一次性 ¥3,000-8,000 · 源码交付 · 永久使用</p>
+  </div>
+
+  <footer>
+    WeekLab · <a href="https://78cc9b4e22c34fbd-39-157-112-53.serveousercontent.com" target="_blank">更多技术服务</a>
+  </footer>
+</div>
+
+<script>
+function calc(){
+  const rev=parseInt(document.getElementById('revenue').value);
+  const delPct=parseInt(document.getElementById('delivery').value)/100;
+  const commission=0.22;
+  const shiftRate=0.5;
+
+  document.getElementById('rev-val').textContent='¥'+rev.toLocaleString();
+  document.getElementById('del-val').textContent=Math.round(delPct*100)+'%';
+
+  const monthlyFee=Math.round(rev*delPct*commission);
+  const annualFee=monthlyFee*12;
+  const monthlySave=Math.round(monthlyFee*shiftRate);
+  const yearlySave=monthlySave*12;
+  const netYear=yearlySave-5000;
+
+  document.getElementById('annual-fee').textContent='¥'+annualFee.toLocaleString();
+  document.getElementById('monthly-fee').textContent='¥'+monthlyFee.toLocaleString();
+  document.getElementById('savings').textContent='¥'+monthlySave.toLocaleString();
+  document.getElementById('net-year').textContent='¥'+netYear.toLocaleString();
+}
+calc();
+</script>
+</body>
+</html>

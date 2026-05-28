@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeekLab — 中小企业技术解决方案 | 扫码点餐 · 数据自动化 · 工具定制</title>
+<meta name="description" content="为中小企业和实体商户提供技术解决方案：餐饮扫码点餐系统、数据采集自动化、办公效率工具定制。先看demo，再决定。">
+<style>
+:root{--bg:#0a0a0f;--surface:#14141f;--border:#252540;--text:#e8e8f0;--muted:#8888a0;--accent:#6c5ce7;--accent-glow:#a29bfe;--success:#00b894;--warn:#f0c060;--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Microsoft YaHei','PingFang SC',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:1px solid var(--border)}
+header .logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent-glow),#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:0.9rem}
+header nav a:hover{color:var(--text)}
+.btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-size:0.95rem;transition:all 0.2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(108,92,231,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,92,231,0.5)}
+.btn-outline{background:transparent;color:var(--accent-glow);border:1px solid var(--accent)}
+.hero{padding:80px 24px 60px;text-align:center;max-width:700px;margin:0 auto}
+.hero .badge{display:inline-block;padding:6px 16px;background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3);border-radius:20px;color:var(--accent-glow);font-size:0.85rem;margin-bottom:20px}
+.hero h1{font-size:2.6rem;font-weight:800;line-height:1.3;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(135deg,#a29bfe,#6c5ce7,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:550px;margin:0 auto 24px}
+.hero .stats{display:flex;gap:40px;justify-content:center;margin-top:32px}
+.hero .stat .num{font-size:2rem;font-weight:800;color:var(--accent-glow)}
+.hero .stat .label{color:var(--muted);font-size:0.85rem}
+/* Services */
+.services{max-width:1000px;margin:0 auto;padding:0 24px 60px}
+.services h2{text-align:center;font-size:1.8rem;margin-bottom:40px}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all 0.3s;position:relative}
+.service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 48px rgba(108,92,231,0.12)}
+.service-card .icon{font-size:2.5rem;margin-bottom:16px}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{color:var(--muted);font-size:0.92rem;margin-bottom:16px}
+.service-card .price{font-weight:700;color:var(--accent-glow);font-size:1.1rem}
+.service-card .tag{position:absolute;top:16px;right:16px;background:rgba(0,184,148,0.12);color:var(--success);padding:3px 10px;border-radius:10px;font-size:0.75rem;font-weight:600}
+/* Demo showcase */
+.demo-section{max-width:900px;margin:0 auto 60px;padding:0 24px}
+.demo-section h2{text-align:center;font-size:1.5rem;margin-bottom:20px}
+.demo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;text-align:center}
+.demo-card .phone-frame{display:inline-block;width:280px;border:3px solid #333;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.demo-card .phone-frame img{width:100%;display:block}
+.demo-card .cta{margin-top:24px}
+.demo-card .cta p{color:var(--muted);margin-bottom:12px}
+/* How it works */
+.process{max-width:800px;margin:0 auto 60px;padding:0 24px}
+.process h2{text-align:center;font-size:1.5rem;margin-bottom:32px}
+.process-steps{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.process-step{flex:1;min-width:200px;text-align:center;padding:24px;background:var(--surface);border-radius:var(--radius)}
+.process-step .step-num{width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-weight:700}
+.process-step h4{font-size:1rem;margin-bottom:4px}
+.process-step p{color:var(--muted);font-size:0.85rem}
+/* ROI calc */
+.roi{max-width:700px;margin:0 auto 60px;padding:40px;background:linear-gradient(135deg,rgba(108,92,231,0.1),rgba(253,121,168,0.04));border:1px solid rgba(108,92,231,0.2);border-radius:var(--radius)}
+.roi h2{font-size:1.3rem;margin-bottom:20px;text-align:center}
+.roi table{width:100%;border-collapse:collapse}
+.roi td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem}
+.roi td:last-child{text-align:right;font-weight:600}
+.roi .highlight{color:var(--success);font-size:1.2rem}
+.roi .loss{color:#e74c3c}
+/* Contact */
+.contact{max-width:500px;margin:0 auto 60px;padding:40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.contact h2{font-size:1.4rem;margin-bottom:12px}
+.contact p{color:var(--muted);margin-bottom:20px}
+.contact .methods{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.contact .method{padding:16px 24px;background:var(--bg);border-radius:10px;min-width:140px}
+.contact .method .label{color:var(--muted);font-size:0.8rem}
+.contact .method .val{font-weight:600;margin-top:4px}
+footer{text-align:center;padding:32px;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--border)}
+footer a{color:var(--accent-glow);text-decoration:none}
+@media(max-width:600px){.hero h1{font-size:1.8rem}.hero .stats{gap:24px}.service-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">WeekLab</div>
+  <nav>
+    <a href="#services">服务</a>
+    <a href="#demo">案例</a>
+    <a href="#contact">联系</a>
+    <a href="index.html">EN</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="badge">🇨🇳 服务中国中小企业和实体商户</div>
+  <h1>用技术帮你的生意<span>省钱、提效、增收</span></h1>
+  <p>我们为中小企业和实体商户提供"看得见、用得上、花得值"的技术解决方案。先看demo，再聊需求，最后定价。</p>
+  <div class="stats">
+    <div class="stat"><div class="num">20-35%</div><div class="label">餐饮平台佣金节省</div></div>
+    <div class="stat"><div class="num">80%</div><div class="label">重复工作可自动化</div></div>
+    <div class="stat"><div class="num">¥3k-15k</div><div class="label">项目报价区间</div></div>
+  </div>
+</div>
+
+<div class="services" id="services">
+  <h2>技术服务</h2>
+  <div class="service-grid">
+
+    <div class="service-card">
+      <div class="tag">推荐</div>
+      <div class="icon">📱</div>
+      <h3>餐饮扫码点餐系统</h3>
+      <p>顾客扫码→手机点餐→厨房打印→完成。省去外卖平台 20-35% 抽佣，数据归你自己。支持堂食+自提。</p>
+      <div class="price">¥3,000 – ¥8,000</div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:4px">一次性部署 · 终生使用 · 无月费</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🤖</div>
+      <h3>企业数据自动化</h3>
+      <p>竞品价格监控、行业数据采集、报表自动生成、Excel批量处理。Python脚本定制，帮你从重复劳动中解放。</p>
+      <div class="price">¥1,000 – ¥8,000</div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:4px">按需定制 · 交付源码</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">📑</div>
+      <h3>办公效率工具</h3>
+      <p>PDF批量处理、发票OCR识别、文件智能重命名。纯浏览器端运行，数据不外传。可按企业需求定制内部工具。</p>
+      <div class="price">¥1,000 – ¥5,000</div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:4px">浏览器端 · 隐私安全 · 免部署</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🛠️</div>
+      <h3>微信小程序开发</h3>
+      <p>预约系统、会员管理、在线商城、企业展示。从需求梳理到上线交付，完整流程服务。</p>
+      <div class="price">¥5,000 – ¥20,000</div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:4px">含设计+开发+上线</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="demo-section" id="demo">
+  <h2>案例：扫码点餐 Demo</h2>
+  <div class="demo-card">
+    <p style="color:var(--muted);margin-bottom:16px">👇 用手机扫码体验完整点餐流程</p>
+    <div style="background:#fff;display:inline-block;padding:12px;border-radius:12px">
+      <img src="qr-restaurant-demo.png" alt="扫码体验" style="width:160px;height:160px" onerror="this.parentElement.innerHTML='<div style=width:160px;height:160px;background:#eee;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem>二维码图片</div>'">
+    </div>
+    <div class="cta">
+      <p>或直接访问：</p>
+      <a href="https://ac9a90ea60c5ce1d-39-157-112-53.serveousercontent.com" target="_blank" class="btn btn-outline">📱 顾客点餐页</a>
+      <a href="https://ac9a90ea60c5ce1d-39-157-112-53.serveousercontent.com/admin.html" target="_blank" class="btn btn-outline" style="margin-left:8px">🖥️ 商家管理后台</a>
+    </div>
+  </div>
+</div>
+
+<div class="roi" style="max-width:800px">
+  <h2>算一笔账：你的餐厅能省多少？</h2>
+  <p style="text-align:center;color:var(--muted);margin-bottom:24px">拖动滑块，看看你的餐厅实际情况</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:24px">
+    <div style="background:var(--bg);padding:16px;border-radius:10px">
+      <label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:8px">🏪 月营业额</label>
+      <input type="range" id="roi-revenue" min="10000" max="200000" step="5000" value="50000" style="width:100%" oninput="calcROI()">
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted)"><span>¥1万</span><span>¥20万</span></div>
+      <div style="text-align:center;font-weight:700;font-size:1.3rem;margin-top:8px" id="roi-rev-display">¥50,000</div>
+    </div>
+    <div style="background:var(--bg);padding:16px;border-radius:10px">
+      <label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:8px">🛵 外卖占比</label>
+      <input type="range" id="roi-delivery" min="10" max="80" step="5" value="50" style="width:100%" oninput="calcROI()">
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted)"><span>10%</span><span>80%</span></div>
+      <div style="text-align:center;font-weight:700;font-size:1.3rem;margin-top:8px" id="roi-del-display">50%</div>
+    </div>
+    <div style="background:var(--bg);padding:16px;border-radius:10px">
+      <label style="font-size:0.85rem;color:var(--muted);display:block;margin-bottom:8px">💸 平台佣金率</label>
+      <input type="range" id="roi-commission" min="15" max="28" step="1" value="22" style="width:100%" oninput="calcROI()">
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted)"><span>15%</span><span>28%</span></div>
+      <div style="text-align:center;font-weight:700;font-size:1.3rem;margin-top:8px" id="roi-comm-display">22%</div>
+    </div>
+  </div>
+  <table>
+    <tr><td>每月平台佣金</td><td class="loss" id="roi-monthly-fee">-¥5,500</td></tr>
+    <tr><td>自营点餐替代 <span id="roi-shift-rate">50</span>% 外卖 → 每月节省</td><td class="highlight" id="roi-monthly-save">+¥2,750</td></tr>
+    <tr><td>一年节省</td><td class="highlight" id="roi-yearly-save">¥33,000</td></tr>
+    <tr><td>系统投入（一次性）</td><td>¥3,000 – 8,000</td></tr>
+    <tr style="font-weight:800;font-size:1.1rem"><td>首年净收益</td><td class="highlight" id="roi-net">¥25,000 – 30,000</td></tr>
+  </table>
+</div>
+
+<script>
+function calcROI(){
+  const rev=parseInt(document.getElementById('roi-revenue').value);
+  const delPct=parseInt(document.getElementById('roi-delivery').value)/100;
+  const comm=parseInt(document.getElementById('roi-commission').value)/100;
+  const shiftRate=0.5;
+  document.getElementById('roi-rev-display').textContent='¥'+rev.toLocaleString();
+  document.getElementById('roi-del-display').textContent=Math.round(delPct*100)+'%';
+  document.getElementById('roi-comm-display').textContent=Math.round(comm*100)+'%';
+  const monthlyFee=rev*delPct*comm;
+  const monthlySave=monthlyFee*shiftRate;
+  const yearlySave=monthlySave*12;
+  const lowNet=yearlySave-8000,highNet=yearlySave-3000;
+  document.getElementById('roi-monthly-fee').textContent='-¥'+Math.round(monthlyFee).toLocaleString();
+  document.getElementById('roi-monthly-save').textContent='+¥'+Math.round(monthlySave).toLocaleString();
+  document.getElementById('roi-yearly-save').textContent='¥'+Math.round(yearlySave).toLocaleString();
+  document.getElementById('roi-shift-rate').textContent=Math.round(shiftRate*100);
+  document.getElementById('roi-net').textContent='¥'+Math.round(lowNet).toLocaleString()+' – '+Math.round(highNet).toLocaleString();
+}
+calcROI();
+</script>
+
+<div class="process">
+  <h2>合作流程</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h4>聊需求</h4>
+      <p>微信/电话沟通，了解你的业务流程和痛点</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h4>看 Demo</h4>
+      <p>我们提供可用的演示，让你直观感受效果</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h4>定方案</h4>
+      <p>确认功能和报价，签订服务协议</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h4>交付</h4>
+      <p>开发→测试→部署→培训，全程负责</p>
+    </div>
+  </div>
+</div>
+
+<div class="contact" id="contact">
+  <h2>开始聊聊？</h2>
+  <p>无需承诺，先沟通需求。不收费咨询。</p>
+  <div class="methods">
+    <div class="method">
+      <div class="label">📧 邮箱</div>
+      <div class="val">weeklab@proton.me</div>
+    </div>
+    <div class="method">
+      <div class="label">💬 微信</div>
+      <div class="val">扫码添加</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>WeekLab — 用技术为中小企业的生意加分</p>
+  <p style="margin-top:4px"><a href="https://github.com/sea123w">GitHub</a> · 所有项目源码可查 · 诚信合作</p>
+</footer>
+</body>
+</html>
